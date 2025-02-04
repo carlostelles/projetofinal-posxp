@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.2'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.projetofinal'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starter Web (MVC, REST)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Data JPA (Persistência de Dados)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Validação de Dados (Bean Validation)
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+//    implementation 'jakarta.validation:jakarta.validation-api:2.0.2'
+
+    // Lombok (Redução de Boilerplate)
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // Banco de Dados (MySQL ou H2)
+    runtimeOnly 'com.mysql:mysql-connector-j' // Para MySQL
+    runtimeOnly 'com.h2database:h2'           // Para H2 (banco em memória)
+
+    // Testes
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
