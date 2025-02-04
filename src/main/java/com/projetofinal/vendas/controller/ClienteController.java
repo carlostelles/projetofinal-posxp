@@ -31,6 +31,12 @@ public class ClienteController {
         return clienteService.criar(clienteDTO);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Cliente atualizar(@PathVariable Long id, @Valid @RequestBody ClienteInputDTO clienteDTO) {
+        return clienteService.atualizar(id, clienteDTO);
+    }
+
     @GetMapping("/search/findByName")
     public List<Cliente> buscarPorNome(@RequestParam String name) {
         return clienteService.buscarPorNome(name);
