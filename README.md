@@ -90,6 +90,8 @@ POST /pedidos
 }
 ```
 
+---
+
 ## 🔧 Instalação
 
 1. Clone o repositório:
@@ -114,12 +116,16 @@ spring.datasource.password=sua-senha
 ./gradlew bootRun
 ````
 
+---
+
 ## 🧪 Testes
 ### Via Postman
 1. Importe a coleção do Postman fornecida.
 2. Configure as variáveis de ambiente:
    * `base_url`: `http://localhost:8080`
    * `cliente_id`, `produto_id`, `pedido_id` (atualize após criar recursos).
+
+---
 
 ## 🤝 Contribuição
 Contribuições são bem-vindas! Siga os passos:
@@ -129,6 +135,8 @@ Contribuições são bem-vindas! Siga os passos:
 3. Faça commit das mudanças: `git commit -m 'Adiciona nova feature'`.
 4. Push para a branch: `git push origin feature/nova-feature`.
 5. Abra um Pull Request.
+
+---
 
 ## 📄 Licença
 Este projeto está sob a licença Apache 2.0.
