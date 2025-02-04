@@ -1,0 +1,262 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+    "name": "Sistema de Vendas Online",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Coleção para testar a API de vendas online."
+  },
+  "item": [
+    {
+      "name": "Cliente",
+      "item": [
+        {
+          "name": "Criar Cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria Silva\",\n  \"email\": \"maria@email.com\",\n  \"cpf\": \"12345678901\",\n  \"telefone\": \"11999999999\",\n  \"endereco\": \"Rua das Flores, 123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["clientes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Todos os Clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/clientes",
+              "host": ["{{base_url}}"],
+              "path": ["clientes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/clientes/{{cliente_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "{{cliente_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria Silva Atualizada\",\n  \"email\": \"maria.nova@email.com\",\n  \"telefone\": \"11988888888\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/clientes/{{cliente_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "{{cliente_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Clientes por Nome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/clientes/search/findByName?name=Maria",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "search", "findByName"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Maria"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Contar Clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/clientes/count",
+              "host": ["{{base_url}}"],
+              "path": ["clientes", "count"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Produto",
+      "item": [
+        {
+          "name": "Criar Produto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Notebook Dell\",\n  \"descricao\": \"Notebook Core i7, 16GB RAM\",\n  \"preco\": 4999.99,\n  \"estoque\": 10,\n  \"categoria\": \"Eletrônicos\",\n  \"sku\": \"NTB-DELL-123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/produtos",
+              "host": ["{{base_url}}"],
+              "path": ["produtos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Todos os Produtos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/produtos",
+              "host": ["{{base_url}}"],
+              "path": ["produtos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Produto por Nome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/produtos/search/findByName?name=Dell",
+              "host": ["{{base_url}}"],
+              "path": ["produtos", "search", "findByName"],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Dell"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pedido",
+      "item": [
+        {
+          "name": "Criar Pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clienteId\": {{cliente_id}},\n  \"itens\": [\n    {\n      \"produtoId\": {{produto_id}},\n      \"quantidade\": 2\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pedidos",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Adicionar Item ao Pedido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produto_id}},\n  \"quantidade\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/pedidos/{{pedido_id}}/itens",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos", "{{pedido_id}}", "itens"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Status do Pedido",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pedidos/{{pedido_id}}/status?status=ENVIADO",
+              "host": ["{{base_url}}"],
+              "path": ["pedidos", "{{pedido_id}}", "status"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "ENVIADO"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "cliente_id",
+      "value": "1"
+    },
+    {
+      "key": "produto_id",
+      "value": "1"
+    },
+    {
+      "key": "pedido_id",
+      "value": "1"
+    }
+  ]
+}
